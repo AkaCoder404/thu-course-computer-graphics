@@ -1,2 +1,3 @@
 # thu-course-computer-graphics
-introductory computer graphics course at Tsinghua University
+this repository contains projects completed for an introductory computer graphics course at Tsinghua University 
+
