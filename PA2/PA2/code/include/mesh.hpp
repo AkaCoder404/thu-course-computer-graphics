@@ -15,7 +15,9 @@ public:
 
     struct TriangleIndex {
         TriangleIndex() {
-            x[0] = 0; x[1] = 0; x[2] = 0;
+            x[0] = 0; 
+            x[1] = 0; 
+            x[2] = 0;
         }
         int &operator[](const int i) { return x[i]; }
         // By Computer Graphics convention, counterclockwise winding is front face
@@ -25,11 +27,18 @@ public:
     std::vector<Vector3f> v;
     std::vector<TriangleIndex> t;
     std::vector<Vector3f> n;
+
     bool intersect(const Ray &r, Hit &h, float tmin) override;
 
     void drawGL() override {
         // TODO (PA2): Call drawGL for each individual triangle.
-			
+        // printf("drawGL()\n");
+        for (int triId = 0; triId < (int)t.size(); ++triId) {
+            TriangleIndex &triIndex = t[triId];
+            Triangle triangle(v[triIndex[0]], v[triIndex[1]], v[triIndex[2]],  material);
+            triangle.normal = n[triId];
+            triangle.drawGL();
+        }	
     }
 
 private:

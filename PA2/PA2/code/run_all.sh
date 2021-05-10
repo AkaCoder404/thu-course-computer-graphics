@@ -28,5 +28,3 @@ bin/PA2 testcases/scene04_axes.txt
 bin/PA2 testcases/scene05_bunny_200.txt
 bin/PA2 testcases/scene06_bunny_1k.txt
 bin/PA2 testcases/scene07_shine.txt
-
-sleep 5

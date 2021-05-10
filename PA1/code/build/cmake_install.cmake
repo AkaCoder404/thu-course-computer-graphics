@@ -1,4 +1,4 @@
-# Install script for directory: /home/akashili17/Documents/cg/PA1/code
+# Install script for directory: /home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/akashili17/Documents/cg/PA1/code/build/deps/vecmath/cmake_install.cmake")
+  include("/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/build/deps/vecmath/cmake_install.cmake")
 
 endif()
 
@@ -56,5 +56,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/akashili17/Documents/cg/PA1/code/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

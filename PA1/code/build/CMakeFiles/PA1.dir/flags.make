@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/akashili17/Documents/cg/PA1/code/include -I/home/akashili17/Documents/cg/PA1/code/deps/vecmath/include
+CXX_INCLUDES = -I/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/include -I/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/deps/vecmath/include
 
 CXX_FLAGS = -O3 -DNDEBUG -std=gnu++11
 

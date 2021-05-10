@@ -27,9 +27,18 @@ public:
 
     Vector3f Shade(const Ray &ray, const Hit &hit,
                    const Vector3f &dirToLight, const Vector3f &lightColor) {
-        Vector3f shaded = Vector3f::ZERO;
-        // 
+        // Vector3f shaded = Vector3f::ZERO;
+        // phong model
+        Vector3f N = hit.getNormal();
+        Vector3f V = -ray.getDirection().normalized();
+        Vector3f Lx = dirToLight.normalized();
+        Vector3f Rx = (2 * (Vector3f::dot(Lx, N)) * N - Lx).normalized();
+        Vector3f shaded = lightColor * (diffuseColor * relu(Vector3f::dot(Lx,N)) + specularColor * (pow(relu(Vector3f::dot(V, Rx)), shininess)));
         return shaded;
+    }
+
+    float relu(float x) {
+        return std::max((float)0, x);
     }
 
     // For OpenGL, this is fully implemented
@@ -43,6 +52,7 @@ protected:
     Vector3f diffuseColor;
     Vector3f specularColor;
     float shininess;
+    
 };
 
 
