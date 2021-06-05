@@ -18,7 +18,7 @@ public:
 
     }
 
-    explicit Group (int num_objects) {
+    explicit Group (int num_objects) : objList(num_objects) {
 
     }
 
@@ -27,22 +27,39 @@ public:
     }
 
     bool intersect(const Ray &r, Hit &h, float tmin) override {
+    bool is_intersect = false;
+      for (int i = 0; i < getGroupSize(); i++) {
+        // printf("%d\n",i);
+        if (objList[i]->intersect(r, h, tmin)) {
+          // printf("intersect\n");
+          is_intersect = true;
+        }
+      }
+    //   printf("intersect checked\n");
+      return is_intersect;
 
     }
 
     void drawGL() override {
+        for (int i = 0; i < getGroupSize(); i++) {
+            if(objList[i]) {
+                objList[i]->drawGL();
+            }
+      }
+
 
     }
 
     void addObject(int index, Object3D *obj) {
-
+        objList[index] = obj;
     }
 
     int getGroupSize() {
-
+        return (int)objList.size();
     }
 
 private:
+    std::vector<Object3D*> objList;
 
 };
 
