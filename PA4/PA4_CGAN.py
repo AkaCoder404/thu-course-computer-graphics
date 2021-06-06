@@ -97,14 +97,14 @@ transform = transform.Compose([
     transform.ImageNormalize(mean=[0.5], std=[0.5]),
 ])
 
-# load MNIST data
+# load MNIST data （what discriminator uses to check generated images)
 dataloader = MNIST(train=True, transform=transform).set_attrs(batch_size=opt.batch_size, shuffle=True)
 
 # optimizer 
 optimizer_G = nn.Adam(generator.parameters(), lr=opt.lr, betas=(opt.b1, opt.b2))
 optimizer_D = nn.Adam(discriminator.parameters(), lr=opt.lr, betas=(opt.b1, opt.b2))
 
-# same images
+# save images
 from PIL import Image
 def save_image(img, path, nrow=10, padding=5):
     N,C,W,H = img.shape
@@ -145,7 +145,7 @@ def sample_image(n_row, batches_done):
 # ----------
 
 # train epochs
-# for epoch in range(opt.n_epochs):
+for epoch in range(opt.n_epochs):
     for i, (imgs, labels) in enumerate(dataloader):
 
         batch_size = imgs.shape[0]
@@ -169,6 +169,8 @@ def sample_image(n_row, batches_done):
         # 生成一组图片
         gen_imgs = generator(z, gen_labels)
         # 损失函数衡量生成器欺骗判别器的能力，即希望判别器将生成图片分类为valid
+        # the loss function measures the ability of the generator to deceive the discriminator, 
+        # it is hoped that the discriminator will classify the generated image as valid
         validity = discriminator(gen_imgs, gen_labels)
         g_loss = adversarial_loss(validity, valid)
         g_loss.sync()
@@ -180,11 +182,11 @@ def sample_image(n_row, batches_done):
 
         validity_real = discriminator(real_imgs, labels)
         # d_real_loss = adversarial_loss("""TODO: 计算真实类别的损失函数""")
-        d_real_loss = adversarial_loss(validity, validity_real)
+        d_real_loss = adversarial_loss(validity_real, valid)
 
         validity_fake = discriminator(gen_imgs.stop_grad(), gen_labels)
         # d_fake_loss = adversarial_loss("""TODO: 计算虚假类别的损失函数""")
-        d_fake_loss = adversarial_loss(validity, validity_fake)
+        d_fake_loss = adversarial_loss(validity_fake, fake)
 
 
         # 总的判别器损失
