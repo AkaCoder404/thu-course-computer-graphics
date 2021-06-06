@@ -9,6 +9,8 @@ from jittor import nn
 if jt.has_cuda:
     jt.flags.use_cuda = 1
 
+
+# terminal arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('--n_epochs', type=int, default=100, help='number of epochs of training')
 parser.add_argument('--batch_size', type=int, default=64, help='size of the batches')
@@ -66,12 +68,16 @@ class Discriminator(nn.Module):
                                    nn.Linear(512, 512), 
                                    nn.Dropout(0.4), 
                                    nn.LeakyReLU(0.2), 
+                                   
                                    # TODO: 添加最后一个线性层，最终输出为一个实数
+                                   nn.Linear(512, 1)
                                    )
 
     def execute(self, img, labels):
         d_in = jt.contrib.concat((img.view((img.shape[0], (- 1))), self.label_embedding(labels)), dim=1)
         # TODO: 将d_in输入到模型中并返回计算结果
+        validity = self.model(d_in)
+        return validity
 
 # 损失函数：平方误差
 # 调用方法：adversarial_loss(网络输出A, 分类标签B)
@@ -84,16 +90,21 @@ discriminator = Discriminator()
 # 导入MNIST数据集
 from jittor.dataset.mnist import MNIST
 import jittor.transform as transform
+
 transform = transform.Compose([
     transform.Resize(opt.img_size),
     transform.Gray(),
     transform.ImageNormalize(mean=[0.5], std=[0.5]),
 ])
+
+# load MNIST data
 dataloader = MNIST(train=True, transform=transform).set_attrs(batch_size=opt.batch_size, shuffle=True)
 
+# optimizer 
 optimizer_G = nn.Adam(generator.parameters(), lr=opt.lr, betas=(opt.b1, opt.b2))
 optimizer_D = nn.Adam(discriminator.parameters(), lr=opt.lr, betas=(opt.b1, opt.b2))
 
+# same images
 from PIL import Image
 def save_image(img, path, nrow=10, padding=5):
     N,C,W,H = img.shape
@@ -133,7 +144,8 @@ def sample_image(n_row, batches_done):
 #  模型训练
 # ----------
 
-for epoch in range(opt.n_epochs):
+# train epochs
+# for epoch in range(opt.n_epochs):
     for i, (imgs, labels) in enumerate(dataloader):
 
         batch_size = imgs.shape[0]
@@ -167,10 +179,13 @@ for epoch in range(opt.n_epochs):
         # ---------------------
 
         validity_real = discriminator(real_imgs, labels)
-        d_real_loss = adversarial_loss("""TODO: 计算真实类别的损失函数""")
+        # d_real_loss = adversarial_loss("""TODO: 计算真实类别的损失函数""")
+        d_real_loss = adversarial_loss(validity, validity_real)
 
         validity_fake = discriminator(gen_imgs.stop_grad(), gen_labels)
-        d_fake_loss = adversarial_loss("""TODO: 计算虚假类别的损失函数""")
+        # d_fake_loss = adversarial_loss("""TODO: 计算虚假类别的损失函数""")
+        d_fake_loss = adversarial_loss(validity, validity_fake)
+
 
         # 总的判别器损失
         d_loss = (d_real_loss + d_fake_loss) / 2
@@ -195,7 +210,7 @@ discriminator.eval()
 generator.load('generator_last.pkl')
 discriminator.load('discriminator_last.pkl')
 
-number = #TODO: 写入你的学号（字符串类型）
+number = '2018080106'#TODO: 写入你的学号（字符串类型）
 n_row = len(number)
 z = jt.array(np.random.normal(0, 1, (n_row, opt.latent_dim))).float32().stop_grad()
 labels = jt.array(np.array([int(number[num]) for num in range(n_row)])).float32().stop_grad()
