@@ -63,10 +63,10 @@ RM = /home/akashili17/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code
+CMAKE_SOURCE_DIR = /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/build
+CMAKE_BINARY_DIR = /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -113,14 +113,14 @@ deps/vecmath/clean: deps/vecmath/CMakeFiles/vecmath.dir/clean
 CMakeFiles/PA2.dir/all: deps/vecmath/CMakeFiles/vecmath.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA2.dir/build.make CMakeFiles/PA2.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PA2.dir/build.make CMakeFiles/PA2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target PA2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target PA2"
 .PHONY : CMakeFiles/PA2.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/PA2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/build/CMakeFiles 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/PA2.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/build/CMakeFiles 0
 .PHONY : CMakeFiles/PA2.dir/rule
 
 # Convenience name for target.
@@ -140,14 +140,14 @@ CMakeFiles/PA2.dir/clean:
 deps/vecmath/CMakeFiles/vecmath.dir/all:
 	$(MAKE) $(MAKESILENT) -f deps/vecmath/CMakeFiles/vecmath.dir/build.make deps/vecmath/CMakeFiles/vecmath.dir/depend
 	$(MAKE) $(MAKESILENT) -f deps/vecmath/CMakeFiles/vecmath.dir/build.make deps/vecmath/CMakeFiles/vecmath.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/build/CMakeFiles --progress-num=7,8,9,10,11,12,13,14,15 "Built target vecmath"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/build/CMakeFiles --progress-num=7,8,9,10,11,12,13,14,15 "Built target vecmath"
 .PHONY : deps/vecmath/CMakeFiles/vecmath.dir/all
 
 # Build rule for subdir invocation for target.
 deps/vecmath/CMakeFiles/vecmath.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/build/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/build/CMakeFiles 9
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 deps/vecmath/CMakeFiles/vecmath.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/build/CMakeFiles 0
 .PHONY : deps/vecmath/CMakeFiles/vecmath.dir/rule
 
 # Convenience name for target.

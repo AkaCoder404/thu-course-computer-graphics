@@ -15,17 +15,13 @@ class Group : public Object3D {
 
 public:
 
-    Group() {
-    
-    }
+    Group() { }
 
     explicit Group (int num_objects) : objects(num_objects) {
-        // printf("group created \n");
+        printf("Group Size: %d\n", num_objects);
     }
 
-    ~Group() override {
-
-    }
+    ~Group() override { }
 
     bool intersect(const Ray &r, Hit &h, float tmin) override {
         bool did_intersect = false;

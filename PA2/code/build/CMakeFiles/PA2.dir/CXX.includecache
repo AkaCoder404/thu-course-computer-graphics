@@ -190,13 +190,13 @@ cmath
 iostream
 -
 
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/camera_controller.cpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/camera_controller.cpp
 camera_controller.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/camera_controller.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/camera_controller.hpp
 cmath
 -
 
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/image.cpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/image.cpp
 cstdlib
 -
 cstdio
@@ -204,9 +204,9 @@ cstdio
 cstring
 -
 image.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/image.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/image.hpp
 
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/main.cpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/main.cpp
 cassert
 -
 cstdio
@@ -220,25 +220,25 @@ cmath
 iostream
 -
 scene_parser.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/scene_parser.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/scene_parser.hpp
 image.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/image.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/image.hpp
 camera.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/camera.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/camera.hpp
 group.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/group.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/group.hpp
 light.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/light.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/light.hpp
 camera_controller.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/camera_controller.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/camera_controller.hpp
 string
 -
 glut.h
 -
 
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/mesh.cpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/mesh.cpp
 mesh.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/mesh.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/mesh.hpp
 fstream
 -
 iostream
@@ -252,7 +252,7 @@ utility
 sstream
 -
 
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/scene_parser.cpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/scene_parser.cpp
 cstdio
 -
 cstring
@@ -262,27 +262,27 @@ cstdlib
 cmath
 -
 scene_parser.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/scene_parser.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/scene_parser.hpp
 camera.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/camera.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/camera.hpp
 light.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/light.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/light.hpp
 material.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/material.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/material.hpp
 object3d.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/object3d.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/object3d.hpp
 group.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/group.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/group.hpp
 mesh.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/mesh.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/mesh.hpp
 sphere.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/sphere.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/sphere.hpp
 plane.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/plane.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/plane.hpp
 triangle.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/triangle.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/triangle.hpp
 transform.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/transform.hpp
+/home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/transform.hpp
 
 /usr/include/GL/freeglut_std.h
 windows.h

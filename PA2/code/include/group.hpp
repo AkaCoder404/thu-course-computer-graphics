@@ -25,15 +25,10 @@ public:
     bool intersect(const Ray &r, Hit &h, float tmin) override {
       bool is_intersect = false;
       for (int i = 0; i < getGroupSize(); i++) {
-        // printf("%d\n",i);
-        if (objList[i]->intersect(r, h, tmin)) {
-          // printf("intersect\n");
+        if (objList[i]->intersect(r, h, tmin))
           is_intersect = true;
-        }
       }
-      printf("intersect checked\n");
       return is_intersect;
-      // return false;
     }
 
     void drawGL() override {

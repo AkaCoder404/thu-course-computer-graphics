@@ -14,7 +14,7 @@ CMakeFiles/PA2.dir/src/camera_controller.cpp.o
  ../include/camera.hpp
  ../include/camera_controller.hpp
  ../include/ray.hpp
- /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/camera_controller.cpp
+ /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/camera_controller.cpp
  /usr/include/GL/freeglut_std.h
  /usr/include/GL/glut.h
 CMakeFiles/PA2.dir/src/image.cpp.o
@@ -28,7 +28,7 @@ CMakeFiles/PA2.dir/src/image.cpp.o
  ../deps/vecmath/include/vecio.h
  ../deps/vecmath/include/vecmath.h
  ../include/image.hpp
- /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/image.cpp
+ /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/image.cpp
 CMakeFiles/PA2.dir/src/main.cpp.o
  ../deps/vecmath/include/Matrix2f.h
  ../deps/vecmath/include/Matrix3f.h
@@ -49,7 +49,7 @@ CMakeFiles/PA2.dir/src/main.cpp.o
  ../include/object3d.hpp
  ../include/ray.hpp
  ../include/scene_parser.hpp
- /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/main.cpp
+ /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/main.cpp
  /usr/include/GL/freeglut_std.h
  /usr/include/GL/glut.h
 CMakeFiles/PA2.dir/src/mesh.cpp.o
@@ -68,7 +68,7 @@ CMakeFiles/PA2.dir/src/mesh.cpp.o
  ../include/object3d.hpp
  ../include/ray.hpp
  ../include/triangle.hpp
- /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/mesh.cpp
+ /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/mesh.cpp
  /usr/include/GL/freeglut_std.h
  /usr/include/GL/glut.h
 CMakeFiles/PA2.dir/src/scene_parser.cpp.o
@@ -94,6 +94,6 @@ CMakeFiles/PA2.dir/src/scene_parser.cpp.o
  ../include/sphere.hpp
  ../include/transform.hpp
  ../include/triangle.hpp
- /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/src/scene_parser.cpp
+ /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/src/scene_parser.cpp
  /usr/include/GL/freeglut_std.h
  /usr/include/GL/glut.h

@@ -1,4 +1,4 @@
-# Install script for directory: /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/PA2/code/deps/vecmath
+# Install script for directory: /home/akashili17/Documents/cg/thu-course-computer-graphics/PA2/code/deps/vecmath
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
