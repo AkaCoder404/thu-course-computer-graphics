@@ -166,7 +166,7 @@ cmath
 iostream
 -
 
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/image.cpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/image.cpp
 cstdlib
 -
 cstdio
@@ -176,9 +176,9 @@ cstring
 iostream
 -
 image.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/image.hpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/image.hpp
 
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/main.cpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/main.cpp
 cassert
 -
 cstdio
@@ -192,21 +192,21 @@ cmath
 iostream
 -
 scene_parser.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/scene_parser.hpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/scene_parser.hpp
 image.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/image.hpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/image.hpp
 camera.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/camera.hpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/camera.hpp
 group.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/group.hpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/group.hpp
 light.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/light.hpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/light.hpp
 string
 -
 
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/mesh.cpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/mesh.cpp
 mesh.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/mesh.hpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/mesh.hpp
 fstream
 -
 iostream
@@ -220,7 +220,7 @@ utility
 sstream
 -
 
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/scene_parser.cpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/scene_parser.cpp
 cstdio
 -
 cstring
@@ -230,25 +230,25 @@ cstdlib
 cmath
 -
 scene_parser.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/scene_parser.hpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/scene_parser.hpp
 camera.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/camera.hpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/camera.hpp
 light.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/light.hpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/light.hpp
 material.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/material.hpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/material.hpp
 object3d.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/object3d.hpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/object3d.hpp
 group.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/group.hpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/group.hpp
 mesh.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/mesh.hpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/mesh.hpp
 sphere.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/sphere.hpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/sphere.hpp
 plane.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/plane.hpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/plane.hpp
 triangle.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/triangle.hpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/triangle.hpp
 transform.hpp
-/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/transform.hpp
+/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/transform.hpp
 

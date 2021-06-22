@@ -18,8 +18,6 @@ public:
     }
 
     Plane(const Vector3f &normal, float d, Material *m) : Object3D(m) {
-        // printf("plane\n");
-        // printf("plane(%f, %f, %f)\n", normal.x(), normal.y(), normal.z());
         this->normal = normal;  // plane normal of unit length
         this->d = d;
 

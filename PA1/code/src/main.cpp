@@ -33,44 +33,46 @@ int main(int argc, char *argv[]) {
     // through that pixel and finding its intersection with
     // the scene.  Write the color at the intersection to that
     // pixel in your output image.
-    // printf("hello0\n\n");
-    SceneParser sceneParser(inputFile.c_str());
-    Image img = Image(sceneParser.getCamera()->getWidth(), sceneParser.getCamera()->getHeight());
-    // printf("hello2.5\n\n");
-    // printf("scene width %d, height %d\n", sceneParser.getCamera()->getWidth(), sceneParser.getCamera()->getHeight());
-       
-    for (int x = 0; x < sceneParser.getCamera()->getWidth(); ++x) {
-        for (int y = 0; y < sceneParser.getCamera()->getHeight(); ++y) {
-            // 计算当前像素(x,y)处相机出射光线camRay
-            // implement generateRay
-            // printf("hello3\n\n");
-            Ray camRay = sceneParser.getCamera()->generateRay(Vector2f(x,y));
-            // printf("hello4\n\n");
-            // implement group
-            Group* baseGroup = sceneParser.getGroup();
-            Hit hit;           
-            // implement intersect
-            bool isIntersect = baseGroup->intersect(camRay, hit, 0);
-            if(isIntersect) {
-                Vector3f finalColor = Vector3f::ZERO;
 
-                for (int li = 0; li < sceneParser.getNumLights(); ++li) {
-                    Light* light = sceneParser.getLight(li);
-                    Vector3f L, LightColor;
-                    light->getIllumination(camRay.pointAtParameter(hit.getT()), L, LightColor);
-                    // implement shade
-                    finalColor += hit.getMaterial()->Shade(camRay, hit, L, LightColor);
+    SceneParser sceneParser(inputFile.c_str());
+    Camera* camera = sceneParser.getCamera();
+    Group* group = sceneParser.getGroup();
+    int num_lights = sceneParser.getNumLights();
+    int w = camera->getWidth();
+    int h = camera->getHeight();
+    Image img(w, h);
+    float tmin = 1e-8;
+    
+    cout << "casting ..." << endl;
+    for (int y = 0; y < h; y++) {
+        for (int x = 0; x < w; x++) {
+            Ray ray = camera->generateRay(Vector2f(x, y));
+            //std::cout << "x: "<<x<<" y: "<<y<<" rayDir: ("<<ray.getDirection().x()<<", "<<ray.getDirection().y()<<", "<<ray.getDirection().z()<<")"<<endl;
+            //std::cout << "x: "<<x<<" y: "<<y<<" rayDir: ("<<ray.getOrigin().x()<<", "<<ray.getOrigin().y()<<", "<<ray.getOrigin().z()<<")"<<endl;
+            Hit hit;
+            Vector3f ans(0, 0, 0);
+            if (group->intersect(ray, hit, tmin)) {
+                Material* material = hit.getMaterial();
+                for (int i = 0; i < num_lights; i++) {
+                    Light* light = sceneParser.getLight(i);
+                    Vector3f dirToLight;
+                    Vector3f lightColor;
+                    Vector3f p = ray.pointAtParameter(hit.getT());
+                    light->getIllumination(p, dirToLight, lightColor);
+                    ans += material->Shade(ray, hit, dirToLight, lightColor);
                 }
-                img.SetPixel(x, y, finalColor);
+                //cout << "x: "<< x <<" y: " << y << " color: (" << ans.x() << ", " << ans.y() << ", " << ans.z() << ")" << endl;
+                //ans = Vector3f(0.8, 0.8, 0.2);
             }
             else {
-                img.SetPixel(x, y, sceneParser.getBackgroundColor());
+                ans = sceneParser.getBackgroundColor();
             }
+            // cout << "x: "<< x <<" y: " << y << " color: (" << ans.x() << ", " << ans.y() << ", " << ans.z() << ")" << endl;
+            img.SetPixel(x, y, ans);
         }
     }
-
+    cout << "casting done" << "\n\n";
     img.SaveBMP(outputFile.c_str());
-    cout << "Hello! Computer Graphics!" << endl << endl;
     return 0;
 }
 

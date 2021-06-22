@@ -27,11 +27,17 @@ public:
     Vector3f Shade(const Ray &ray, const Hit &hit,
                    const Vector3f &dirToLight, const Vector3f &lightColor) {
         // PHONG model
-        Vector3f N = hit.getNormal();
-        Vector3f V = -ray.getDirection().normalized();
-        Vector3f Lx = dirToLight.normalized();
-        Vector3f Rx = (2 * (Vector3f::dot(Lx, N)) * N - Lx).normalized();
-        Vector3f shaded = lightColor * (diffuseColor * relu(Vector3f::dot(Lx,N)) + specularColor * (pow(relu(Vector3f::dot(V, Rx)), shininess)));
+        // Vector3f N = hit.getNormal();
+        // Vector3f V = -ray.getDirection().normalized();
+        // Vector3f Lx = dirToLight.normalized();
+        // Vector3f Rx = (2 * (Vector3f::dot(Lx, N)) * N - Lx).normalized();
+        // Vector3f shaded = lightColor * (diffuseColor * relu(Vector3f::dot(Lx,N)) + specularColor * (pow(relu(Vector3f::dot(V, Rx)), shininess)));
+        
+        // 
+        Vector3f shaded = Vector3f::ZERO;
+        Vector3f Rx = 2 * Vector3f::dot(dirToLight, hit.getNormal()) * hit.getNormal() - dirToLight;
+        shaded = lightColor * (diffuseColor * std::max(0.0f, Vector3f::dot(dirToLight, hit.getNormal())) + 
+                               specularColor * pow(std::max(0.0f, - Vector3f::dot(ray.getDirection(), Rx)), shininess) );
         return shaded;
     }
     float relu(float x) {
