@@ -15,6 +15,10 @@ class Triangle;
 class Transform;
 class Mesh;
 
+// ray tracer
+class Parametric;
+class Rectangle;
+
 #define MAX_PARSER_TOKEN_LENGTH 1024
 
 class SceneParser {
@@ -63,6 +67,7 @@ private:
     void parseLights();
     Light *parsePointLight();
     Light *parseDirectionalLight();
+    Light *parseAreaLight(); // ray tracer
     void parseMaterials();
     Material *parseMaterial();
     Object3D *parseObject(char token[MAX_PARSER_TOKEN_LENGTH]);
@@ -72,6 +77,10 @@ private:
     Triangle *parseTriangle();
     Mesh *parseTriangleMesh();
     Transform *parseTransform();
+
+    // ray tracer
+    Parametric *parseParametric();
+    Rectangle *parseRectangle();
 
     int getToken(char token[MAX_PARSER_TOKEN_LENGTH]);
 

@@ -1,6 +1,7 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
+#include <iostream>
 
 #include "Vector3f.h"
 #include "Vector2f.h"
@@ -75,6 +76,13 @@ const float& Vector3f::operator [] ( int i ) const
 float& Vector3f::operator [] ( int i )
 {
     return m_elements[i];
+}
+
+// ray tracing
+float& Vector3f::Axis( int axis ) {
+	if ( axis == 0 ) return x();
+	if ( axis == 1 ) return y();
+	if ( axis == 2 ) return z();
 }
 
 float& Vector3f::x()
@@ -319,4 +327,15 @@ bool operator == ( const Vector3f& v0, const Vector3f& v1 )
 bool operator != ( const Vector3f& v0, const Vector3f& v1 )
 {
     return !( v0 == v1 );
+}
+
+
+Vector3f Vector3f::Exp()
+{
+	return Vector3f(exp(x()), exp(y()), exp(z()));
+}
+
+float Vector3f::mean()
+{
+	return (x() + y() + z()) / 3.0f;
 }

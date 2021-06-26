@@ -14,6 +14,12 @@ public:
         height = h;
         data = new Vector3f[width * height];
     }
+    // ray tracing
+    Image(int w, int h, Vector3f* d) {
+        width = w;
+        height = h;
+        data = d;
+    }
 
     ~Image() {
         delete[] data;
@@ -52,6 +58,8 @@ public:
     static Image *LoadTGA(const char *filename);
 
     void SaveTGA(const char *filename) const;
+    // ray tracing
+    static Image *LoadBMP(const char *filename);
 
     int SaveBMP(const char *filename);
 

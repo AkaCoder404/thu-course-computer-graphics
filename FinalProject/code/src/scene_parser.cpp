@@ -15,6 +15,10 @@
 #include "triangle.hpp"
 #include "transform.hpp"
 
+// ray tracer
+#include "parametric.hpp"
+#include "rectangle.hpp"
+
 #define DegreesToRadians(x) ((M_PI * x) / 180.0f)
 
 SceneParser::SceneParser(const char *filename) {
@@ -81,19 +85,14 @@ void SceneParser::parseFile() {
     char token[MAX_PARSER_TOKEN_LENGTH];
     while (getToken(token)) {
         if (!strcmp(token, "PerspectiveCamera")) {
-            // printf("persective camera\n");
             parsePerspectiveCamera();
         } else if (!strcmp(token, "Background")) {
-            // printf("background\n");
             parseBackground();
         } else if (!strcmp(token, "Lights")) {
-            // printf("lights\n");
             parseLights();
         } else if (!strcmp(token, "Materials")) {
-            // printf("materials\n");
             parseMaterials();
         } else if (!strcmp(token, "Group")) {
-            // printf("groups\n");
             group = parseGroup();
         } else {
             printf("Unknown token in parseFile: '%s'\n", token);
@@ -120,18 +119,34 @@ void SceneParser::parsePerspectiveCamera() {
     assert (!strcmp(token, "up"));
     Vector3f up = readVector3f();
     getToken(token);
-    assert (!strcmp(token, "angle"));
-    float angle_degrees = readFloat();
-    float angle_radians = DegreesToRadians(angle_degrees);
+    // assert (!strcmp(token, "angle"));
+    // float angle_degrees = readFloat();
+    // float angle_radians = DegreesToRadians(angle_degrees);
+    // getToken(token);
+    
+    // ray tracing
+    assert (!strcmp(token, "w-angle"));
+    float w_angle_degrees = readFloat();
+    float w_angle_radians = DegreesToRadians(w_angle_degrees);
     getToken(token);
+    assert (!strcmp(token, "h-angle"));
+    float h_angle_degrees = readFloat();
+    float h_angle_radians = DegreesToRadians(h_angle_degrees);
+    getToken(token);
+    //
     assert (!strcmp(token, "width"));
     int width = readInt();
     getToken(token);
     assert (!strcmp(token, "height"));
     int height = readInt();
     getToken(token);
+    // ray tracing
+    assert (!strcmp(token, "photons"));
+    int photons = readInt();
+    getToken(token);
+    //
     assert (!strcmp(token, "}"));
-    camera = new PerspectiveCamera(center, direction, up, width, height, angle_radians);
+    camera = new PerspectiveCamera(center, direction, up, width, height, w_angle_radians, h_angle_radians, photons);
 }
 
 void SceneParser::parseBackground() {
@@ -172,6 +187,9 @@ void SceneParser::parseLights() {
             lights[count] = parseDirectionalLight();
         } else if (strcmp(token, "PointLight") == 0) {
             lights[count] = parsePointLight();
+        // ray tracing
+        } else if (strcmp(token, "AreaLight") == 0) {
+            lights[count] = parseAreaLight();
         } else {
             printf("Unknown token in parseLight: '%s'\n", token);
             exit(0);
@@ -211,6 +229,30 @@ Light *SceneParser::parsePointLight() {
     assert (!strcmp(token, "}"));
     return new PointLight(position, color);
 }
+// ray tracing
+Light *SceneParser::parseAreaLight() {
+    char token[MAX_PARSER_TOKEN_LENGTH];
+    getToken(token);
+    assert (!strcmp(token, "{"));
+    getToken(token);
+    assert (!strcmp(token, "position"));
+    Vector3f position = readVector3f();
+    getToken(token);
+    assert (!strcmp(token, "x_axis"));
+    Vector3f x_axis = readVector3f();
+    getToken(token);
+    assert (!strcmp(token, "y_axis"));
+    Vector3f y_axis = readVector3f();
+    getToken(token);
+    assert (!strcmp(token, "color"));
+    Vector3f color = readVector3f();
+    getToken(token);
+    assert (!strcmp(token, "emission"));
+    float emission = readFloat();
+    getToken(token);
+    assert (!strcmp(token, "}"));
+    return new AreaLight(position, x_axis, y_axis, color, emission);
+}
 // ====================================================================
 // ====================================================================
 
@@ -245,8 +287,11 @@ Material *SceneParser::parseMaterial() {
     char token[MAX_PARSER_TOKEN_LENGTH];
     char filename[MAX_PARSER_TOKEN_LENGTH];
     filename[0] = 0;
-    Vector3f diffuseColor(1, 1, 1), specularColor(0, 0, 0);
+    /*ray tracing absorb color*/
+    Vector3f diffuseColor(1, 1, 1), specularColor(0, 0, 0), absorbColor(0, 0, 0);
     float shininess = 0;
+    // ray tracing
+    float diff_factor = 1.0f, spec_factor = 0.0f, refr_factor = 0.0f, n = 1.5f; 
     getToken(token);
     assert (!strcmp(token, "{"));
     while (true) {
@@ -260,12 +305,23 @@ Material *SceneParser::parseMaterial() {
         } else if (strcmp(token, "texture") == 0) {
             // Optional: read in texture and draw it.
             getToken(filename);
+        // ray tracing
+        } else if (strcmp(token, "diff_factor") == 0) {
+            diff_factor = readFloat();
+        } else if (strcmp(token, "spec_factor") == 0) {
+            spec_factor = readFloat();
+        } else if (strcmp(token, "refr_factor") == 0) {
+            refr_factor = readFloat();
+        } else if (strcmp(token, "n") == 0) {
+            n = readFloat();
+        } else if (strcmp(token, "absorbColor") == 0) {
+            absorbColor = readVector3f();
         } else {
             assert (!strcmp(token, "}"));
             break;
         }
     }
-    auto *answer = new Material(diffuseColor, specularColor, shininess);
+    auto *answer = new Material(filename, diffuseColor, specularColor, absorbColor, shininess, diff_factor, spec_factor, refr_factor, n);
     return answer;
 }
 
@@ -286,6 +342,11 @@ Object3D *SceneParser::parseObject(char token[MAX_PARSER_TOKEN_LENGTH]) {
         answer = (Object3D *) parseTriangleMesh();
     } else if (!strcmp(token, "Transform")) {
         answer = (Object3D *) parseTransform();
+    // ray tracing
+    } else if (!strcmp(token, "Parametric")) {
+        answer = (Object3D *) parseParametric();
+    } else if (!strcmp(token, "Rectangle")) {
+        answer = (Object3D *) parseRectangle();
     } else {
         printf("Unknown token in parseObject: '%s'\n", token);
         exit(0);
@@ -406,10 +467,17 @@ Mesh *SceneParser::parseTriangleMesh() {
     assert (!strcmp(token, "obj_file"));
     getToken(filename);
     getToken(token);
+    // ray tracing 
+    assert (!strcmp(token, "offset"));
+    Vector3f offset = readVector3f();
+    getToken(token);
+    assert (!strcmp(token, "scaling"));
+    Vector3f scaling = readVector3f();
+    getToken(token);
     assert (!strcmp(token, "}"));
     const char *ext = &filename[strlen(filename) - 4];
     assert(!strcmp(ext, ".obj"));
-    Mesh *answer = new Mesh(filename, current_material);
+    Mesh *answer = new Mesh(filename, current_material, offset, scaling);
 
     return answer;
 }
@@ -478,6 +546,48 @@ Transform *SceneParser::parseTransform() {
     return new Transform(matrix, object);
 }
 
+// ray tracing
+Parametric *SceneParser::parseParametric() {
+    char token[MAX_PARSER_TOKEN_LENGTH];
+    char type_token[MAX_PARSER_TOKEN_LENGTH];
+    getToken(token);
+    assert (!strcmp(token, "{"));
+    getToken(token);
+    assert (!strcmp(token, "type"));
+    getToken(type_token);
+    getToken(token);
+    assert (!strcmp(token, "u"));
+    float u_min = readFloat();
+    float u_max = readFloat();
+    getToken(token);
+    assert (!strcmp(token, "v"));
+    float v_min = readFloat();
+    float v_max = readFloat();
+    getToken(token);
+    assert (!strcmp(token, "}"));
+    assert (current_material != nullptr);
+    return new Parametric(current_material, u_min, u_max, v_min, v_max, std::string(type_token));
+}
+
+Rectangle *SceneParser::parseRectangle() {
+    char token[MAX_PARSER_TOKEN_LENGTH];
+    getToken(token);
+    assert (!strcmp(token, "{"));
+    getToken(token);
+    assert (!strcmp(token, "position"));
+    Vector3f position = readVector3f();
+    getToken(token);
+    assert (!strcmp(token, "x_axis"));
+    Vector3f x_axis = readVector3f();
+    getToken(token);
+    assert (!strcmp(token, "y_axis"));
+    Vector3f y_axis = readVector3f();
+    getToken(token);
+    assert (!strcmp(token, "}"));
+    assert (current_material != nullptr);
+    return new Rectangle(position, x_axis, y_axis, current_material);
+}
+
 // ====================================================================
 // ====================================================================
 
@@ -524,3 +634,4 @@ int SceneParser::readInt() {
     }
     return answer;
 }
+

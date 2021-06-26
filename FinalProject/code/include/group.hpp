@@ -18,7 +18,7 @@ public:
     Group() { }
 
     explicit Group (int num_objects) : objects(num_objects) {
-        printf("Group Size: %d\n", num_objects);
+        // printf("Group Size: %d\n", num_objects);
     }
 
     ~Group() override { }
