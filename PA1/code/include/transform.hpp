@@ -29,20 +29,10 @@ public:
     virtual bool intersect(const Ray &r, Hit &h, float tmin) {
         Vector3f trSource = transformPoint(transform, r.getOrigin());
         Vector3f trDirection = transformDirection(transform, r.getDirection());
-
-
-        // Ray tr(trSource, trDirection);
-
-        float length = trDirection.length();
-        // printf("%f\n", length);
-        Ray tr(trSource, trDirection.normalized());
-        
-
-
+        Ray tr(trSource, trDirection);
         bool inter = o->intersect(tr, h, tmin);
-        
         if (inter) {
-            h.set(h.getT() * length, h.getMaterial(), transformDirection(transform.transposed(), h.getNormal()).normalized());
+            h.set(h.getT(), h.getMaterial(), transformDirection(transform.transposed(), h.getNormal()).normalized());
         }
         return inter;
     }

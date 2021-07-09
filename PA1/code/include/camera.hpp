@@ -95,7 +95,6 @@ public:
 
         // create ray
         Ray ray(origin, direction);
-        // printf("hello3\n\n");
         return ray;
 
         

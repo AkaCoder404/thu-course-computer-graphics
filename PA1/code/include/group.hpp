@@ -15,26 +15,20 @@ class Group : public Object3D {
 
 public:
 
-    Group() {
-    
-    }
+    Group() { }
 
     explicit Group (int num_objects) : objects(num_objects) {
-        // printf("group created \n");
+        printf("Group Size: %d\n", num_objects);
     }
 
-    ~Group() override {
-
-    }
+    ~Group() override { }
 
     bool intersect(const Ray &r, Hit &h, float tmin) override {
         bool did_intersect = false;
-        // if each object intersects
-        for (int i = 0; i < getGroupSize(); i++) {
-            if (objects[i]->intersect(r, h, tmin))
+        for (auto i : objects) {
+            if (i->intersect(r, h, tmin))
                 did_intersect = true;
         }
-
         return did_intersect;
     }
 
@@ -43,7 +37,7 @@ public:
     }
 
     int getGroupSize() {
-        return (int) objects.size();
+        return objects.size();
     }
 
 private:

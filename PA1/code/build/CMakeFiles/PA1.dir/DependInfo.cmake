@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/image.cpp" "/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/build/CMakeFiles/PA1.dir/src/image.cpp.o"
-  "/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/main.cpp" "/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/build/CMakeFiles/PA1.dir/src/main.cpp.o"
-  "/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/mesh.cpp" "/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/build/CMakeFiles/PA1.dir/src/mesh.cpp.o"
-  "/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/src/scene_parser.cpp" "/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/build/CMakeFiles/PA1.dir/src/scene_parser.cpp.o"
+  "/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/image.cpp" "/home/akashili/Documents/thu-course-computer-graphics/PA1/code/build/CMakeFiles/PA1.dir/src/image.cpp.o"
+  "/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/main.cpp" "/home/akashili/Documents/thu-course-computer-graphics/PA1/code/build/CMakeFiles/PA1.dir/src/main.cpp.o"
+  "/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/mesh.cpp" "/home/akashili/Documents/thu-course-computer-graphics/PA1/code/build/CMakeFiles/PA1.dir/src/mesh.cpp.o"
+  "/home/akashili/Documents/thu-course-computer-graphics/PA1/code/src/scene_parser.cpp" "/home/akashili/Documents/thu-course-computer-graphics/PA1/code/build/CMakeFiles/PA1.dir/src/scene_parser.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -19,7 +19,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/akashili17/Documents/cg/thu-course-computer-graphics/PA1/code/build/deps/vecmath/CMakeFiles/vecmath.dir/DependInfo.cmake"
+  "/home/akashili/Documents/thu-course-computer-graphics/PA1/code/build/deps/vecmath/CMakeFiles/vecmath.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.
